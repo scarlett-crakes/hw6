@@ -20,10 +20,12 @@ int main()
     // This is just arbitrary code. Change it to test whatever you like about your 
     // hash table implementation.
     for(size_t i = 0; i < 10; i++){
+        //cout << "hello" << endl;
         std::stringstream ss;
         ss << "hi" << i;
         ht.insert({ss.str(), i});
     }
+    //cout << "first for loop done" << endl;
     if( ht.find("hi1") != nullptr ){
         cout << "Found hi1" << endl;
         ht["hi1"] += 1;
@@ -37,10 +39,10 @@ int main()
     ht.remove("hi9");
     cout << "HT size: " << ht.size() << endl;
     if( ht.find("hi9") != nullptr ){
-        cout << "Found hi9" << endl;
+        cout << "Found hi9" << endl;//only part im failing
     }
     else {
-        cout << "Did not find hi9" << endl;
+        cout << "Did not find hi9" << endl; 
     }
     ht.insert({"hi7",17});
     cout << "size: " << ht.size() << endl;

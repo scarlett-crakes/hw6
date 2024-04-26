@@ -96,4 +96,68 @@ bool boggleHelper(const std::set<std::string>& dict, const std::set<std::string>
 {
 //add your solution here!
 
+  if(r < 0 || c < 0 || r >= board.size() || c >= board.size())
+  {
+    return false;
+  }
+
+
+  word += board[r][c];
+  //bool isAPrefix = false;
+  if(dict.find(word) != dict.end() && prefix.find(word) == prefix.end())
+  {
+    //std::cout << "world" << std::endl;
+    result.insert(word);
+    return true;
+  }
+  else if(dict.find(word) != dict.end() && prefix.find(word) != prefix.end())
+  {
+    if(!(boggleHelper(dict, prefix, board, word, result, r + dr, c + dc, dr, dc)))
+    {
+      result.insert(word);
+    }
+    return true;
+  }
+  else if(prefix.find(word) != prefix.end())
+  {
+    if(boggleHelper(dict, prefix, board, word, result, r + dr, c + dc, dr, dc))
+    {
+      //wordFound = true;
+      //std::cout << "shape" << std::endl;
+      return true;
+    }
+    else
+    {
+      return false;
+    } 
+  }
+  else
+  {
+    return false;
+  }
+
+  
+  
+
+  //bool wordFound = false;
+  
+  /*if(boggleHelper(dict, prefix, board, word, result, r - dr, c - dc, dr, dc))
+  {
+    //wordFound =  true;
+    return true;
+  }*/
+  /*if(boggleHelper(dict, prefix, board, word, result, r - dr, c + dc, dr, dc))
+  {
+    return true;
+  }*/
+  /*if(boggleHelper(dict, prefix, board, word, result, r + dr, c - dc, dr, dc))
+  {
+    return true;
+  }*/
+  /*if(wordFound == true)
+  {
+    return true;
+  }*/
+  return false;
+
 }
